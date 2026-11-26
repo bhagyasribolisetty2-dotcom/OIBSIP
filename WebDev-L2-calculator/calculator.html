@@ -1,0 +1,280 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>CalcVerse | Scientific Calculator</title>
+
+    <link rel="stylesheet" href="calculator.css">
+
+</head>
+
+<body>
+
+    <!-- Animated 3D Background -->
+
+    <div class="background" aria-hidden="true">
+
+        <div class="ring ring-one"></div>
+        <div class="ring ring-two"></div>
+        <div class="ring ring-three"></div>
+
+    </div>
+
+
+    <!-- Navigation Bar -->
+
+    <nav class="navbar">
+
+        <a href="index.html" class="logo">
+            Calc<span>Verse</span>
+        </a>
+
+        <a href="index.html" class="home-button">
+            &larr; Back to Home
+        </a>
+
+    </nav>
+
+
+    <!-- Page Heading -->
+
+    <header class="page-heading">
+
+        <p>THE LUXURY EDITION</p>
+
+        <h1>Scientific Calculation Studio</h1>
+
+        <h2>Precision meets elegance.</h2>
+
+    </header>
+
+
+    <!-- Calculator Container -->
+
+    <main class="calculator-container">
+
+        <div class="calculator" id="calculator">
+
+
+            <!-- Calculator Branding -->
+
+            <div class="calculator-header">
+
+                <h2>CalcVerse</h2>
+
+                <span>SCIENTIFIC</span>
+
+            </div>
+
+
+            <!-- DEG and RAD Modes -->
+
+            <div class="mode-container">
+
+                <button class="mode active"
+                        data-mode="DEG"
+                        aria-pressed="true">
+
+                    DEG
+
+                </button>
+
+                <button class="mode"
+                        data-mode="RAD"
+                        aria-pressed="false">
+
+                    RAD
+
+                </button>
+
+                <span class="model-name">
+
+                    CV-01 GOLD
+
+                </span>
+
+            </div>
+
+
+            <!-- Calculator Display -->
+
+            <div class="display" aria-live="polite">
+
+                <div id="expression"></div>
+
+                <div id="result">0</div>
+
+            </div>
+
+
+            <!-- Scientific Buttons -->
+
+            <div class="scientific-grid">
+
+
+                <!-- Scientific Row 1 -->
+
+                <button data-value="sin(">sin</button>
+
+                <button data-value="cos(">cos</button>
+
+                <button data-value="tan(">tan</button>
+
+                <button data-value="log(">log</button>
+
+                <button data-value="ln(">ln</button>
+
+
+                <!-- Scientific Row 2 -->
+
+                <button data-value="asin(">sin⁻¹</button>
+
+                <button data-value="acos(">cos⁻¹</button>
+
+                <button data-value="atan(">tan⁻¹</button>
+
+                <button data-value="π">π</button>
+
+                <button data-value="e">e</button>
+
+
+                <!-- Scientific Row 3 -->
+
+                <button data-value="^2">x²</button>
+
+                <button data-value="^3">x³</button>
+
+                <button data-value="^">xʸ</button>
+
+                <button data-value="sqrt(">√x</button>
+
+                <button data-value="cbrt(">∛x</button>
+
+
+                <!-- Scientific Row 4 -->
+
+                <button data-value="(">(</button>
+
+                <button data-value=")">)</button>
+
+                <button data-value="!">x!</button>
+
+                <button data-value="abs(">|x|</button>
+
+                <button data-value="%">%</button>
+
+            </div>
+
+
+            <!-- Arithmetic Buttons -->
+
+            <div class="number-grid">
+
+
+                <!-- Large AC and DEL Buttons -->
+
+                <button class="control clear-button"
+                        data-action="clear">
+
+                    AC
+
+                </button>
+
+                <button class="control delete-button"
+                        data-action="delete">
+
+                    DEL
+
+                </button>
+
+
+                <!-- Numeric Row 1 -->
+
+                <button class="number" data-value="7">7</button>
+
+                <button class="number" data-value="8">8</button>
+
+                <button class="number" data-value="9">9</button>
+
+                <button class="operator" data-value="÷">÷</button>
+
+
+                <!-- Numeric Row 2 -->
+
+                <button class="number" data-value="4">4</button>
+
+                <button class="number" data-value="5">5</button>
+
+                <button class="number" data-value="6">6</button>
+
+                <button class="operator" data-value="×">×</button>
+
+
+                <!-- Numeric Row 3 -->
+
+                <button class="number" data-value="1">1</button>
+
+                <button class="number" data-value="2">2</button>
+
+                <button class="number" data-value="3">3</button>
+
+                <button class="operator" data-value="−">−</button>
+
+
+                <!-- Numeric Row 4 -->
+
+                <button class="number" data-action="sign">±</button>
+
+                <button class="number" data-value="0">0</button>
+
+                <button class="number" data-value=".">.</button>
+
+                <button class="operator" data-value="+">+</button>
+
+
+                <!-- Full Width Equals Button -->
+
+                <button class="equals equals-large"
+                        data-action="equals">
+
+                    =
+
+                </button>
+
+            </div>
+
+
+            <!-- Calculator Footer -->
+
+            <div class="calculator-footer">
+
+                ENGINEERED FOR PRECISION
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- Website Footer -->
+
+    <footer class="website-footer">
+
+        CalcVerse • Precision • Elegance • Innovation
+
+    </footer>
+
+
+    <script src="calculator.js"></script>
+
+</body>
+
+</html>
