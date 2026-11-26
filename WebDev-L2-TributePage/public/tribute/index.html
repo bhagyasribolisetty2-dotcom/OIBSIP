@@ -1,0 +1,641 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#030711" />
+    <title>Kalpana — Beyond the Sky | A Tribute to Kalpana Chawla</title>
+    <meta
+      name="description"
+      content="An immersive, cinematic tribute to Kalpana Chawla, the first woman of Indian origin to travel into space — from Karnal to Columbia."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preload" as="image" href="assets/images/earth.jpg" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#story">Skip to content</a>
+    <canvas id="starfield" aria-hidden="true"></canvas>
+
+    <!-- ================= Navigation ================= -->
+    <header class="nav">
+      <a class="nav-brand" href="#home">KALPANA</a>
+      <nav aria-label="Main">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#story">Her Story</a></li>
+          <li><a href="#family">Family</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#missions">Space Missions</a></li>
+          <li><a href="#legacy">Legacy</a></li>
+          <li><a href="#tribute">Tribute</a></li>
+        </ul>
+      </nav>
+      <div class="nav-tools">
+        <button class="icon-btn" id="pauseBtn" type="button" aria-pressed="false">Pause motion</button>
+        <button class="icon-btn menu-toggle" type="button" aria-expanded="false" aria-controls="navLinks">Menu</button>
+      </div>
+      <div class="progress" aria-hidden="true"></div>
+    </header>
+
+    <main id="main">
+      <!-- ================= Scene 1 — Hero ================= -->
+      <section class="hero" id="home" aria-labelledby="heroTitle">
+        <div class="hero-bg">
+          <img src="assets/images/earth.jpg" alt="" fetchpriority="high" />
+        </div>
+        <div class="atmo-glow" aria-hidden="true"></div>
+        <div class="orbit-rings" aria-hidden="true"><span></span><span></span><span></span></div>
+
+        <div class="hero-content">
+          <p class="hero-eyebrow">AN IMMERSIVE BIOGRAPHICAL EXPERIENCE</p>
+          <h1 class="hero-title" id="heroTitle">
+            <span class="line">KALPANA</span>
+            <span class="line">CHAWLA</span>
+          </h1>
+          <p class="hero-sub">Beyond the Sky</p>
+          <p class="hero-tagline">Her name means imagination. She made it real.</p>
+          <div class="hero-actions">
+            <button class="btn" id="skipBtn" type="button">Skip Intro</button>
+            <button class="btn" id="replayBtn" type="button" hidden>Replay Journey</button>
+            <span class="hint">Click the spacecraft to begin the journey</span>
+          </div>
+        </div>
+
+        <div class="ship-wrap">
+          <div class="ship-parallax">
+            <button class="ship-btn" id="shipBtn" type="button" aria-label="Begin the journey: launch the spacecraft">
+              <span class="ship-ping" aria-hidden="true"></span>
+              <span class="engine-trail" aria-hidden="true"></span>
+              <span class="engine e1" aria-hidden="true"></span>
+              <span class="engine e2" aria-hidden="true"></span>
+              <span class="engine e3" aria-hidden="true"></span>
+              <img src="assets/images/spaceship.png" alt="" width="539" height="308" />
+              <span class="ship-label" aria-hidden="true">CLICK TO LAUNCH</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="scroll-cue" aria-hidden="true"></div>
+      </section>
+
+      <div class="countdown" role="status" aria-live="assertive"></div>
+      <div class="flash" aria-hidden="true"></div>
+
+      <!-- ================= Scene 2 — Flashlight ================= -->
+      <section class="section flashlight" id="story" aria-labelledby="storyTitle">
+        <p class="eyebrow reveal">Scene II — Her Story</p>
+        <h2 class="section-title split" id="storyTitle">A Light in the Dark</h2>
+        <p class="lead center reveal">Move your mouse or touch the scene to shine a light and find her.</p>
+
+        <div
+          class="flash-stage reveal zoom"
+          tabindex="0"
+          role="img"
+          aria-label="Symbolic lunar landscape with an astronaut silhouette. A flashlight reveals the NASA portrait of Kalpana Chawla. Use arrow keys to move the light."
+        >
+          <div class="lunar" aria-hidden="true"></div>
+          <div class="lunar-earth" aria-hidden="true"></div>
+          <svg class="silhouette" viewBox="0 0 120 200" aria-hidden="true">
+            <g fill="#0b1426" stroke="rgba(96,165,250,.55)" stroke-width="1.5">
+              <rect x="22" y="58" width="76" height="80" rx="22" />
+              <rect x="10" y="64" width="22" height="58" rx="10" />
+              <rect x="88" y="64" width="22" height="58" rx="10" />
+              <rect x="32" y="128" width="24" height="64" rx="10" />
+              <rect x="64" y="128" width="24" height="64" rx="10" />
+              <circle cx="60" cy="36" r="30" />
+            </g>
+            <ellipse cx="60" cy="38" rx="20" ry="15" fill="rgba(214,184,121,.35)" />
+          </svg>
+          <img
+            class="portrait-reveal"
+            src="assets/images/kalpana-portrait.jpg"
+            alt="Official NASA portrait of Kalpana Chawla in an orange launch and entry suit, holding her helmet"
+            loading="lazy"
+            width="1000"
+            height="1250"
+          />
+          <div class="beam" aria-hidden="true"></div>
+          <p class="flash-hint" aria-hidden="true">Move to reveal</p>
+        </div>
+
+        <p class="flash-caption split">Some dreams go beyond the sky.</p>
+        <div class="flash-controls">
+          <button class="btn" id="revealToggle" type="button" aria-pressed="false">Reveal full portrait</button>
+        </div>
+        <p class="note center">
+          The lunar landscape is symbolic. Kalpana Chawla&apos;s two spaceflights were in low Earth orbit aboard Space
+          Shuttle Columbia; she never landed on the Moon.
+        </p>
+      </section>
+
+      <!-- ================= Scene 3 — Zoom to Karnal ================= -->
+      <section class="zoom-section" aria-labelledby="zoomTitle">
+        <h2 class="sr-only" id="zoomTitle">From space to Karnal: Earth, India, Haryana, Karnal</h2>
+        <div class="zoom-sticky">
+          <div class="zoom-layer earth" aria-hidden="true">
+              <img src="assets/images/earth-full.png" alt="" loading="lazy" />
+            </div>
+            <div class="zoom-layer map india">
+            <div class="zoom-map-frame" style="--ar: 1; transform-origin: 62% 42%">
+              <img src="assets/images/map-india.png" alt="Globe centred on India" loading="lazy" width="1100" height="1100" />
+            </div>
+          </div>
+          <div class="zoom-layer map haryana">
+            <div class="zoom-map-frame" style="--ar: 1100 / 1215; transform-origin: 31% 26%">
+              <img src="assets/images/map-haryana.png" alt="Map of India with the state of Haryana highlighted" loading="lazy" width="1100" height="1215" />
+            </div>
+          </div>
+          <div class="zoom-layer map karnal">
+            <div class="zoom-map-frame" style="--ar: 1100 / 1170">
+              <img src="assets/images/map-karnal.png" alt="Map of Haryana with Karnal district highlighted" loading="lazy" width="1100" height="1170" />
+              <span class="marker" aria-hidden="true"><span class="marker-label">KARNAL</span></span>
+            </div>
+          </div>
+
+          <ol class="zoom-dots" aria-hidden="true">
+            <li>Earth</li>
+            <li>India</li>
+            <li>Haryana</li>
+            <li>Karnal</li>
+          </ol>
+          <div class="zoom-caption">
+            <p class="zoom-step">1 / 4 — Earth</p>
+            <h2>A small town. A big sky.</h2>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="birthTitle">
+        <div class="container">
+          <p class="eyebrow reveal">Scene III — Karnal, Haryana</p>
+          <h2 class="section-title split" id="birthTitle">Where the Story Begins</h2>
+          <div class="birth-grid">
+            <article class="glass fact-card reveal from-left">
+              <h3>Birthplace</h3>
+              <p>Karnal, a town in the north Indian state of Haryana, about 125 km north of New Delhi.</p>
+            </article>
+            <article class="glass fact-card reveal">
+              <h3>Date of Birth</h3>
+              <p>
+                NASA&apos;s official biography lists <strong>1 July 1961</strong>. Her family and many Indian sources give
+                <strong>17 March 1962</strong>, explaining that the official date was recorded so she could sit her
+                school matriculation exam early.
+              </p>
+            </article>
+            <article class="glass fact-card reveal from-right">
+              <h3>Early Years</h3>
+              <p>
+                She grew up the youngest of four children and attended Tagore Bal Niketan Senior Secondary School in
+                Karnal, where she was drawn to the aircraft of the local flying club.
+              </p>
+            </article>
+          </div>
+          <p class="note reveal">Because records conflict, both birth dates are shown. Her birth hospital is not named here because no reliable source documents it.</p>
+        </div>
+      </section>
+
+      <!-- ================= Scene 4 — Family ================= -->
+      <section class="section" id="family" aria-labelledby="familyTitle">
+        <div class="container">
+          <p class="eyebrow reveal">Scene IV — Childhood &amp; Family</p>
+          <h2 class="section-title split" id="familyTitle">Where Imagination Began</h2>
+          <p class="lead reveal">
+            In school she chose her own name, <em>Kalpana</em>, which means &ldquo;imagination&rdquo;. At home she was
+            affectionately called <em>Montu</em>. Watching aeroplanes from the Karnal flying club, she would ask her
+            father to take her for joyrides, and she drew aircraft in school when other children drew landscapes.
+          </p>
+
+          <div class="family-layout">
+            <figure class="photo-frame float reveal from-left">
+              <img
+                src="assets/images/family-group.png"
+                alt="Kalpana Chawla seated in front, smiling, with her husband Jean-Pierre Harrison and family members at home"
+                loading="lazy"
+                width="600"
+                height="441"
+              />
+              <figcaption>Kalpana (seated, front) with her husband Jean-Pierre Harrison (left) and family</figcaption>
+            </figure>
+
+            <div class="family-cards">
+              <article class="glass person reveal from-right">
+                <img class="avatar" src="assets/images/father.png" alt="Banarasi Lal Chawla, smiling, seated in an armchair" loading="lazy" width="905" height="625" style="object-position: 38% 25%" />
+                <div>
+                  <h3>Banarasi Lal Chawla</h3>
+                  <p>Her father, a businessman in Karnal. He encouraged her curiosity and her early fascination with flight.</p>
+                </div>
+              </article>
+              <article class="glass person reveal from-right">
+                <img class="avatar" src="assets/images/mother.png" alt="Sanjyothi Chawla, smiling, wearing a red knitted cap and glasses" loading="lazy" width="1774" height="1774" style="object-position: 58% 55%" />
+                <div>
+                  <h3>Sanjyothi Chawla</h3>
+                  <p>Her mother, who supported her decision to pursue engineering at a time when few women entered the field.</p>
+                </div>
+              </article>
+              <article class="glass person reveal from-right">
+                <span class="monogram" aria-hidden="true">KC</span>
+                <div>
+                  <h3>Siblings</h3>
+                  <p>Kalpana was the youngest of four children: sisters Sunita and Deepa, and brother Sanjay.</p>
+                </div>
+              </article>
+              <article class="glass person reveal from-right">
+                <span class="monogram" aria-hidden="true">JP</span>
+                <div>
+                  <h3>Jean-Pierre Harrison</h3>
+                  <p>She married Jean-Pierre Harrison, a flying instructor and aviation author, in 1983.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+          <p class="note reveal">
+            Family photographs supplied by the site author. Images from Getty Images are not used here because they are
+            watermarked and require a paid licence.
+          </p>
+        </div>
+      </section>
+
+      <!-- ================= Scene 5 — Timeline ================= -->
+      <section class="section" id="education" aria-labelledby="timelineTitle">
+        <div class="container">
+          <p class="eyebrow reveal center">Scene V — The Dream Flight Path</p>
+          <h2 class="section-title split center" id="timelineTitle" style="text-align: center">From Karnal to Orbit</h2>
+
+          <ol class="timeline">
+            <li class="timeline-track" aria-hidden="true"></li>
+            <li class="timeline-fill" aria-hidden="true"></li>
+            <li class="rocket-head" aria-hidden="true"></li>
+
+            <li class="milestone reveal from-left">
+              <article class="glass milestone-card">
+                <div class="milestone-media"><span class="year-badge">1970s</span></div>
+                <div class="milestone-body">
+                  <p class="milestone-date">Karnal</p>
+                  <h3>Tagore Bal Niketan</h3>
+                  <p>Schooling at Tagore Bal Niketan Senior Secondary School, Karnal, where her interest in flight took root.</p>
+                </div>
+              </article>
+            </li>
+            <li class="milestone reveal from-right">
+              <article class="glass milestone-card">
+                <div class="milestone-media"><img src="assets/images/pec.png" alt="Red-brick main building of Punjab Engineering College, Chandigarh" loading="lazy" /></div>
+                <div class="milestone-body">
+                  <p class="milestone-date">Chandigarh</p>
+                  <h3>Punjab Engineering College</h3>
+                  <p>Bachelor of Engineering in aeronautical engineering — one of very few women in the programme.</p>
+                </div>
+              </article>
+            </li>
+            <li class="milestone reveal from-left">
+              <article class="glass milestone-card">
+                <div class="milestone-media"><img src="assets/images/uta.png" alt="The University of Texas at Arlington entrance sign and clock tower" loading="lazy" /></div>
+                <div class="milestone-body">
+                  <p class="milestone-date">Arlington, Texas</p>
+                  <h3>University of Texas at Arlington</h3>
+                  <p>Master of Science in aerospace engineering after moving to the United States.</p>
+                </div>
+              </article>
+            </li>
+            <li class="milestone reveal from-right">
+              <article class="glass milestone-card">
+                <div class="milestone-media"><span class="year-badge">1988</span></div>
+                <div class="milestone-body">
+                  <p class="milestone-date">Boulder, Colorado</p>
+                  <h3>PhD, University of Colorado Boulder</h3>
+                  <p>A second master&apos;s degree (1986) and a doctorate in aerospace engineering (1988).</p>
+                </div>
+              </article>
+            </li>
+            <li class="milestone reveal from-left">
+              <article class="glass milestone-card">
+                <div class="milestone-media"><span class="year-badge">1988</span></div>
+                <div class="milestone-body">
+                  <p class="milestone-date">Moffett Field, California</p>
+                  <h3>NASA Ames Research Center</h3>
+                  <p>Research in powered-lift computational fluid dynamics, later joining Overset Methods Inc. in 1993.</p>
+                </div>
+              </article>
+            </li>
+            <li class="milestone reveal from-right">
+              <article class="glass milestone-card">
+                <div class="milestone-media">
+                  <img src="assets/images/zero-g.png" alt="Kalpana Chawla floating weightless in a blue flight suit during reduced-gravity training" loading="lazy" style="object-position: center 30%" />
+                </div>
+                <div class="milestone-body">
+                  <p class="milestone-date">December 1994</p>
+                  <h3>Selected as a NASA Astronaut</h3>
+                  <p>Chosen in NASA&apos;s 15th astronaut group, reporting to Johnson Space Center in March 1995.</p>
+                </div>
+              </article>
+            </li>
+            <li class="milestone reveal from-left">
+              <article class="glass milestone-card">
+                <div class="milestone-media">
+                  <img src="assets/images/sts87-launch.jpg" alt="Space Shuttle Columbia launching on mission STS-87" loading="lazy" />
+                </div>
+                <div class="milestone-body">
+                  <p class="milestone-date">19 Nov – 5 Dec 1997</p>
+                  <h3>STS-87 aboard Columbia</h3>
+                  <p>Her first spaceflight, making her the first woman of Indian origin in space.</p>
+                </div>
+              </article>
+            </li>
+            <li class="milestone reveal from-right">
+              <article class="glass milestone-card">
+                <div class="milestone-media">
+                  <img src="assets/images/sts107-launch.jpg" alt="Space Shuttle Columbia lifting off on mission STS-107" loading="lazy" />
+                </div>
+                <div class="milestone-body">
+                  <p class="milestone-date">16 Jan – 1 Feb 2003</p>
+                  <h3>STS-107 aboard Columbia</h3>
+                  <p>A 16-day science mission. Columbia and its crew of seven were lost during re-entry.</p>
+                </div>
+              </article>
+            </li>
+          </ol>
+
+          <div class="stats" role="list">
+            <div class="glass stat reveal" role="listitem">
+              <div class="stat-num"><span data-target="2">0</span></div>
+              <p class="stat-label">Space missions</p>
+            </div>
+            <div class="glass stat reveal" role="listitem">
+              <div class="stat-num"><span data-target="30">0</span>d <span data-target="14">0</span>h</div>
+              <p class="stat-label">Total time in space (30 d 14 h 54 m)</p>
+            </div>
+            <div class="glass stat reveal" role="listitem">
+              <div class="stat-num"><span data-target="252">0</span></div>
+              <p class="stat-label">Orbits of Earth on STS-87</p>
+            </div>
+            <div class="glass stat reveal" role="listitem">
+              <div class="stat-num">~<span data-target="80">0</span></div>
+              <p class="stat-label">Experiments on STS-107</p>
+            </div>
+          </div>
+          <p class="note reveal">Statistics from NASA&apos;s official astronaut biography and mission summaries.</p>
+        </div>
+      </section>
+
+      <!-- ================= Scene 6 — Missions ================= -->
+      <section class="section" id="missions" aria-labelledby="missionsTitle">
+        <div class="container">
+          <p class="eyebrow reveal">Scene VI — Space Missions</p>
+          <h2 class="section-title split" id="missionsTitle">Two Flights Aboard Columbia</h2>
+
+          <div class="missions-grid">
+            <article class="glass mission-card reveal from-left">
+              <div class="mission-media">
+                <img src="assets/images/sts87-crew.jpg" alt="The six-member STS-87 crew in their official portrait" loading="lazy" />
+                <span class="orbit-particles" aria-hidden="true"></span>
+                <img class="patch" src="assets/images/sts87-patch.png" alt="STS-87 mission patch" loading="lazy" />
+              </div>
+              <div class="mission-body">
+                <h3>STS-87</h3>
+                <div class="mission-meta">
+                  <span class="chip">Launched 19 Nov 1997</span>
+                  <span class="chip">Space Shuttle Columbia</span>
+                  <span class="chip">15 d 16 h 34 m</span>
+                </div>
+                <dl>
+                  <div>
+                    <dt>Objectives</dt>
+                    <dd>The fourth U.S. Microgravity Payload (USMP-4) and studies of the Sun&apos;s outer atmosphere with the Spartan 201 satellite.</dd>
+                  </div>
+                  <div>
+                    <dt>Her role</dt>
+                    <dd>Mission specialist and prime robotic arm operator, responsible for deploying Spartan.</dd>
+                  </div>
+                  <div>
+                    <dt>Achievements</dt>
+                    <dd>252 orbits and 6.5 million miles in 376 hours, 34 minutes. The first woman of Indian origin to fly in space.</dd>
+                  </div>
+                </dl>
+              </div>
+            </article>
+
+            <article class="glass mission-card reveal from-right">
+              <div class="mission-media">
+                <img src="assets/images/sts107-crew.jpg" alt="The seven-member STS-107 crew floating together aboard Columbia" loading="lazy" />
+                <span class="orbit-particles" aria-hidden="true"></span>
+                <img class="patch" src="assets/images/sts107-patch.png" alt="STS-107 mission insignia" loading="lazy" />
+              </div>
+              <div class="mission-body">
+                <h3>STS-107</h3>
+                <div class="mission-meta">
+                  <span class="chip">Launched 16 Jan 2003</span>
+                  <span class="chip">Space Shuttle Columbia</span>
+                  <span class="chip">15 d 22 h 20 m</span>
+                </div>
+                <dl>
+                  <div>
+                    <dt>Objectives</dt>
+                    <dd>A dedicated science and research mission using the SPACEHAB Research Double Module, with work around the clock in two shifts.</dd>
+                  </div>
+                  <div>
+                    <dt>Her role</dt>
+                    <dd>Flight engineer and mission specialist, supporting experiments in microgravity, life sciences and Earth observation.</dd>
+                  </div>
+                  <div>
+                    <dt>Achievements</dt>
+                    <dd>The crew completed about 80 experiments. Columbia was lost during re-entry on 1 February 2003, 16 minutes before its scheduled landing.</dd>
+                  </div>
+                </dl>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Scene 7 — Constellation ================= -->
+      <section class="section" aria-labelledby="constTitle">
+        <div class="container">
+          <p class="eyebrow reveal">Scene VII — Interactive Constellation</p>
+          <h2 class="section-title split" id="constTitle">Her Journey in the Stars</h2>
+          <p class="lead reveal">Hover over, tap or tab to each star. As you explore, the milestones connect into a constellation.</p>
+
+          <div class="constellation-wrap">
+            <div class="sky reveal from-left">
+              <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"></svg>
+            </div>
+            <article class="glass star-panel reveal from-right" id="starPanel" aria-live="polite">
+              <img src="assets/images/earth.jpg" alt="Earth seen from orbit" loading="lazy" />
+              <div class="panel-body">
+                <p class="milestone-date">Select a star</p>
+                <h3>Each star is a milestone</h3>
+                <p class="panel-text">Begin anywhere. The constellation completes when every star has been explored.</p>
+                <p class="sky-progress">0 of 8 stars explored</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Scene 8 — Quotes ================= -->
+      <section class="section quotes" aria-labelledby="quotesTitle">
+        <div class="container">
+          <p class="eyebrow reveal">Scene VIII</p>
+          <h2 class="section-title split" id="quotesTitle">In Her Own Words</h2>
+
+          <figure class="quote reveal">
+            <blockquote class="split">
+              The path from dreams to success does exist. May you have the vision to find it, the courage to get on to it, and the perseverance to follow it.
+            </blockquote>
+            <figcaption><strong>KALPANA CHAWLA</strong> — message to students of her school, Tagore Bal Niketan, Karnal (widely reported in the Indian press, 2003)</figcaption>
+          </figure>
+
+          <figure class="quote reveal">
+            <blockquote class="split">
+              When you look at the stars and the galaxy, you feel that you are not just from any particular piece of land, but from the solar system.
+            </blockquote>
+            <figcaption><strong>KALPANA CHAWLA</strong> — remark after STS-87, as widely quoted in press profiles</figcaption>
+          </figure>
+          <p class="note center">These are widely reported attributions. Check them against a primary source before publishing.</p>
+        </div>
+      </section>
+
+      <!-- ================= Scene 9 — Legacy ================= -->
+      <section class="section" id="legacy" aria-labelledby="legacyTitle">
+        <div class="container">
+          <p class="eyebrow reveal">Scene IX</p>
+          <h2 class="section-title split" id="legacyTitle">Her Legacy</h2>
+
+          <div class="legacy-grid">
+            <article class="glass legacy-card reveal">
+              <div class="legacy-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3" /><path d="M12 2v4M12 18v4M2 12h4M18 12h4" /></svg>
+              </div>
+              <h3>Kalpana-1 Satellite</h3>
+              <p>ISRO&apos;s meteorological satellite MetSat-1, launched in September 2002, was renamed Kalpana-1 in her honour in February 2003.</p>
+            </article>
+            <article class="glass legacy-card reveal">
+              <div class="legacy-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 15a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z" /><path d="m8.5 14-1.5 8 5-3 5 3-1.5-8" /></svg>
+              </div>
+              <h3>Honours &amp; Awards</h3>
+              <p>Posthumously awarded the Congressional Space Medal of Honor, the NASA Space Flight Medal and the NASA Distinguished Service Medal.</p>
+            </article>
+            <article class="glass legacy-card reveal">
+              <div class="legacy-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 10 12 5l9 5-9 5-9-5Z" /><path d="M7 12v5c3 2 7 2 10 0v-5" /></svg>
+              </div>
+              <h3>Institutions</h3>
+              <p>Kalpana Chawla Government Medical College in Karnal and Kalpana Chawla Hall at the University of Texas at Arlington carry her name.</p>
+            </article>
+            <article class="glass legacy-card reveal">
+              <div class="legacy-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v18M5 8l7-5 7 5" /><circle cx="12" cy="14" r="2" /></svg>
+              </div>
+              <h3>Women in Science</h3>
+              <p>The Government of Karnataka&apos;s Kalpana Chawla Award recognises young women scientists, and scholarships in her name support engineering students.</p>
+            </article>
+            <article class="glass legacy-card reveal">
+              <div class="legacy-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 20 20 4M14 4h6v6" /></svg>
+              </div>
+              <h3>Among the Stars</h3>
+              <p>Asteroid 51826 Kalpanachawla and Northrop Grumman&apos;s Cygnus NG-14 spacecraft, the &ldquo;S.S. Kalpana Chawla&rdquo; (2020), bear her name.</p>
+            </article>
+            <article class="glass legacy-card reveal">
+              <div class="legacy-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l2.9 6.6L22 9.3l-5.4 4.7 1.6 7L12 17.3 5.8 21l1.6-7L2 9.3l7.1-.7L12 2Z" /></svg>
+              </div>
+              <h3>Future Astronauts</h3>
+              <p>Her journey from a small town to orbit continues to inspire students across India and the world to pursue aerospace careers.</p>
+            </article>
+          </div>
+
+          <figure class="photo-frame legacy-photo reveal zoom">
+            <img src="assets/images/planetarium.png" alt="Bronze bust of Kalpana Chawla on a black pedestal at the entrance of the Kalpana Chawla Memorial Planetarium" loading="lazy" width="387" height="516" />
+            <figcaption>Kalpana Chawla Memorial Planetarium, Kurukshetra, Haryana. Image: Haryana Tourism</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- ================= Scene 10 — Memorial ================= -->
+      <section class="section memorial" aria-labelledby="memorialTitle">
+        <div class="container">
+          <p class="eyebrow reveal">Scene X</p>
+          <h2 class="section-title split" id="memorialTitle">Remembering Columbia</h2>
+          <p class="lead center reveal">On 1 February 2003, Space Shuttle Columbia was lost during re-entry over Texas. We remember all seven members of the STS-107 crew.</p>
+
+          <figure class="photo-frame memorial-photo reveal zoom">
+            <img src="assets/images/sts107-crew.jpg" alt="STS-107 crew together aboard Columbia during the mission" loading="lazy" />
+            <figcaption>The STS-107 crew in orbit, photographed aboard Columbia. Credit: NASA</figcaption>
+          </figure>
+
+          <ul class="crew-stars" aria-label="The seven STS-107 crew members">
+            <li style="transition-delay: 0s"><span class="crew-star" aria-hidden="true"></span><span class="crew-name">Rick D. Husband</span><span class="crew-role">Commander</span></li>
+            <li style="transition-delay: 0.25s"><span class="crew-star" aria-hidden="true"></span><span class="crew-name">William C. McCool</span><span class="crew-role">Pilot</span></li>
+            <li style="transition-delay: 0.5s"><span class="crew-star" aria-hidden="true"></span><span class="crew-name">Michael P. Anderson</span><span class="crew-role">Payload Commander</span></li>
+            <li style="transition-delay: 0.75s"><span class="crew-star" aria-hidden="true"></span><span class="crew-name">Kalpana Chawla</span><span class="crew-role">Flight Engineer</span></li>
+            <li style="transition-delay: 1s"><span class="crew-star" aria-hidden="true"></span><span class="crew-name">David M. Brown</span><span class="crew-role">Mission Specialist</span></li>
+            <li style="transition-delay: 1.25s"><span class="crew-star" aria-hidden="true"></span><span class="crew-name">Laurel B. Clark</span><span class="crew-role">Mission Specialist</span></li>
+            <li style="transition-delay: 1.5s"><span class="crew-star" aria-hidden="true"></span><span class="crew-name">Ilan Ramon</span><span class="crew-role">Payload Specialist</span></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ================= Scene 11 — Light a Star ================= -->
+      <section class="section" id="tribute" aria-labelledby="tributeTitle">
+        <div class="container">
+          <p class="eyebrow reveal">Scene XI</p>
+          <h2 class="section-title split" id="tributeTitle">Light a Star</h2>
+          <p class="lead reveal">Leave a short tribute. Each message becomes a star in the sky. Select a star to read it.</p>
+
+          <div class="tribute-layout">
+            <form class="glass tribute-form reveal from-left" id="tributeForm" novalidate>
+              <div>
+                <label for="tName">Your name</label>
+                <input id="tName" name="name" type="text" maxlength="40" autocomplete="name" required />
+              </div>
+              <div>
+                <label for="tMessage">Your tribute</label>
+                <textarea id="tMessage" name="message" rows="4" maxlength="200" required></textarea>
+                <p class="char-count" aria-live="polite">0 / 200</p>
+              </div>
+              <button class="btn btn-solid" type="submit">Light a Star</button>
+              <p class="note" id="formStatus" role="status" aria-live="polite">Messages are saved locally in this browser (localStorage) only. They are not sent anywhere.</p>
+              <button class="icon-btn" id="clearTributes" type="button">Clear tributes on this device</button>
+            </form>
+
+            <div class="tribute-sky reveal from-right" aria-label="Tribute night sky">
+              <p class="empty">No stars yet. Be the first to light one.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Scene 12 — Closing ================= -->
+      <section class="section closing" aria-labelledby="closingTitle">
+        <img class="closing-earth" src="assets/images/earth-full.png" alt="" loading="lazy" />
+        <h2 class="split" id="closingTitle">Some dreams shine forever.</h2>
+        <p class="reveal">Look up tonight. Let her journey inspire yours.</p>
+        <button class="btn" id="returnBtn" type="button">Return to the Stars</button>
+      </section>
+    </main>
+
+    <!-- ================= Credits ================= -->
+    <footer class="credits" aria-labelledby="creditsTitle">
+      <div class="container">
+        <h2 id="creditsTitle">Image Credits &amp; Sources</h2>
+        <ul>
+          <li>Earth background and spacecraft artwork: supplied by the site author</li>
+          <li>Kalpana Chawla portrait: NASA (public domain), via <a href="https://commons.wikimedia.org/wiki/File:Kalpana_Chawla,_NASA_photo_portrait_in_orange_suit.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+          <li>STS-87 launch, crew and patch: NASA (public domain), via Wikimedia Commons</li>
+          <li>STS-107 launch, crew in orbit and insignia: NASA (public domain), via Wikimedia Commons</li>
+          <li>India, Haryana and Karnal locator maps: Wikimedia Commons contributors (CC BY-SA)</li>
+          <li>Facts: <a href="https://www.nasa.gov/former-astronaut-kalpana-chawla/" target="_blank" rel="noopener">NASA astronaut biography</a> and NASA mission pages for STS-87 and STS-107</li>
+        </ul>
+        <p class="footer-line">Oasis Infobyte — Web Development &amp; Designing Internship · Level 2, Task 2: Tribute Page</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
