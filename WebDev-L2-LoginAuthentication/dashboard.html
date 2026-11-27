@@ -1,0 +1,493 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AuthVerse — Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body class="dashboard-body">
+
+    <!-- Animated Background -->
+
+    <div class="background">
+
+        <div class="orb orb-one"></div>
+        <div class="orb orb-two"></div>
+        <div class="orb orb-three"></div>
+
+        <div class="background-grid"></div>
+
+    </div>
+
+    <!-- Loading Screen -->
+
+    <div class="loading-overlay" id="dashboardLoading">
+
+        <div class="spinner"></div>
+
+        <p>Verifying your identity...</p>
+
+    </div>
+
+    <!-- Main Dashboard -->
+
+    <main class="dashboard-wrapper"
+          id="dashboardContent"
+          hidden>
+
+        <!-- Navigation -->
+
+        <header class="dashboard-header">
+
+            <div class="dashboard-brand">
+
+                <div class="brand-icon">
+
+                    <i class="fa-solid fa-shield-halved"></i>
+
+                </div>
+
+                <div>
+
+                    <h2>Auth<span>Verse</span></h2>
+
+                    <small>Your Secure Digital Gateway</small>
+
+                </div>
+
+            </div>
+
+            <button class="logout-button"
+                    id="logoutButton">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                Logout
+
+            </button>
+
+        </header>
+
+        <!-- Welcome Banner -->
+
+        <section class="dashboard-welcome">
+
+            <div class="profile-avatar"
+                 id="profileAvatar">
+
+                <i class="fa-solid fa-user"></i>
+
+            </div>
+
+            <div>
+
+                <p class="dashboard-eyebrow">
+
+                    YOUR PERSONAL WORKSPACE
+
+                </p>
+
+                <h1>
+
+                    Welcome, <span id="userName">User</span>!
+
+                </h1>
+
+                <p>
+
+                    You have successfully signed in
+                    to your AuthVerse account.
+
+                </p>
+
+            </div>
+
+            <div class="active-session">
+
+                <span></span>
+
+                Active Session
+
+            </div>
+
+        </section>
+
+        <!-- Security Status Cards -->
+
+        <section class="security-grid">
+
+            <article class="security-card">
+
+                <div class="security-icon green">
+
+                    <i class="fa-solid fa-shield-halved"></i>
+
+                </div>
+
+                <p>Account Status</p>
+
+                <h3 class="verified-text">
+
+                    Authenticated
+
+                </h3>
+
+            </article>
+
+            <article class="security-card">
+
+                <div class="security-icon green">
+
+                    <i class="fa-solid fa-envelope-circle-check"></i>
+
+                </div>
+
+                <p>Email Status</p>
+
+                <h3 class="verified-text"
+                    id="emailStatus">
+
+                    Verified
+
+                </h3>
+
+            </article>
+
+            <article class="security-card">
+
+                <div class="security-icon">
+
+                    <i class="fa-solid fa-lock"></i>
+
+                </div>
+
+                <p>Session Status</p>
+
+                <h3>Active</h3>
+
+            </article>
+
+            <article class="security-card">
+
+                <div class="security-icon">
+
+                    <i class="fa-solid fa-fingerprint"></i>
+
+                </div>
+
+                <p>Identity</p>
+
+                <h3>Authorized</h3>
+
+            </article>
+
+        </section>
+
+        <!-- Account Details -->
+
+        <section class="account-grid">
+
+            <article class="dashboard-card">
+
+                <div class="dashboard-card-heading">
+
+                    <h2>
+
+                        <i class="fa-solid fa-user"></i>
+
+                        Personal Information
+
+                    </h2>
+
+                </div>
+
+                <div class="information-row">
+
+                    <span>Full Name</span>
+
+                    <strong id="fullName">---</strong>
+
+                </div>
+
+                <div class="information-row">
+
+                    <span>Email Address</span>
+
+                    <strong id="userEmail">---</strong>
+
+                </div>
+
+                <div class="information-row">
+
+                    <span>Email Verification</span>
+
+                    <strong class="verified-text"
+                            id="verificationStatus">
+
+                        Verified
+
+                    </strong>
+
+                </div>
+
+                <div class="information-row">
+
+                    <span>Sign-in Provider</span>
+
+                    <strong id="loginProvider">---</strong>
+
+                </div>
+
+                <button class="gradient-button"
+                        id="editProfileButton">
+
+                    <i class="fa-solid fa-pen"></i>
+
+                    Edit Profile
+
+                </button>
+
+            </article>
+
+            <!-- Account Activity -->
+
+            <article class="dashboard-card">
+
+                <div class="dashboard-card-heading">
+
+                    <h2>
+
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+
+                        Account Activity
+
+                    </h2>
+
+                </div>
+
+                <div class="information-row">
+
+                    <span>Account Created</span>
+
+                    <strong id="accountCreated">---</strong>
+
+                </div>
+
+                <div class="information-row">
+
+                    <span>Last Sign-in</span>
+
+                    <strong id="lastLogin">---</strong>
+
+                </div>
+
+                <div class="information-row">
+
+                    <span>Authentication Service</span>
+
+                    <strong>Firebase</strong>
+
+                </div>
+
+                <div class="information-row">
+
+                    <span>User ID</span>
+
+                    <strong id="userId">---</strong>
+
+                </div>
+
+                <button class="google-button"
+                        id="copyUserId">
+
+                    <i class="fa-solid fa-copy"></i>
+
+                    Copy User ID
+
+                </button>
+
+            </article>
+
+        </section>
+
+        <!-- Account Security -->
+
+        <section class="dashboard-card security-section">
+
+            <div class="dashboard-card-heading">
+
+                <h2>
+
+                    <i class="fa-solid fa-user-shield"></i>
+
+                    Account Security
+
+                </h2>
+
+            </div>
+
+            <p class="security-description">
+
+                Manage your account and keep your
+                personal information protected.
+
+            </p>
+
+            <div class="security-action">
+
+                <div>
+
+                    <h3>Reset Password</h3>
+
+                    <p>
+
+                        Receive a password reset link
+                        at your registered email address.
+
+                    </p>
+
+                </div>
+
+                <button class="outline-button"
+                        id="resetPasswordButton">
+
+                    Reset Password
+
+                </button>
+
+            </div>
+
+            <div class="security-action">
+
+                <div>
+
+                    <h3>Sign Out</h3>
+
+                    <p>
+
+                        End your current authentication session.
+
+                    </p>
+
+                </div>
+
+                <button class="outline-button danger-button"
+                        id="securityLogout">
+
+                    Sign Out
+
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- Footer -->
+
+        <footer class="footer">
+
+            <p>
+
+                <i class="fa-solid fa-shield-halved"></i>
+
+                AuthVerse — Your Secure Digital Gateway
+
+            </p>
+
+            <p>
+
+                Oasis Infobyte Internship |
+                Level 2 — Task 4
+
+            </p>
+
+        </footer>
+
+    </main>
+
+    <!-- Edit Profile Modal -->
+
+    <dialog class="modal" id="editProfileModal">
+
+        <button class="modal-close"
+                id="closeProfileModal"
+                aria-label="Close profile editor">
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+        <div class="modal-icon">
+
+            <i class="fa-solid fa-user-pen"></i>
+
+        </div>
+
+        <h2>Edit Profile</h2>
+
+        <p>Update your personal information.</p>
+
+        <form id="editProfileForm">
+
+            <div class="input-box">
+
+                <input type="text"
+                       id="editName"
+                       placeholder=" "
+                       maxlength="80"
+                       required>
+
+                <label for="editName">
+
+                    Full Name
+
+                </label>
+
+                <i class="fa-solid fa-user"></i>
+
+            </div>
+
+            <button type="submit"
+                    class="gradient-button">
+
+                Save Changes
+
+            </button>
+
+        </form>
+
+    </dialog>
+
+    <!-- Notifications -->
+
+    <div class="toast"
+         id="toast"
+         role="status"
+         aria-live="polite">
+
+        <i id="toastIcon"
+           class="fa-solid fa-circle-info"></i>
+
+        <span id="toastMessage"></span>
+
+    </div>
+
+    <script type="module"
+            src="dashboard.js"></script>
+
+</body>
+
+</html>

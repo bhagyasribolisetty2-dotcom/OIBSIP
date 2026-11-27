@@ -1,0 +1,617 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AuthVerse — Your Secure Digital Gateway</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+    <!-- Animated Background -->
+
+    <div class="background">
+
+        <div class="orb orb-one"></div>
+        <div class="orb orb-two"></div>
+        <div class="orb orb-three"></div>
+
+        <div class="background-grid"></div>
+
+    </div>
+
+    <!-- Website Branding -->
+
+    <header class="branding">
+
+        <div class="brand-icon">
+            <i class="fa-solid fa-shield-halved"></i>
+        </div>
+
+        <div>
+            <h2>Auth<span>Verse</span></h2>
+            <p>Your Secure Digital Gateway</p>
+        </div>
+
+    </header>
+
+    <!-- Main Authentication Container -->
+
+    <main class="auth-wrapper">
+
+        <div class="auth-container" id="authContainer">
+
+            <!-- Animated Diagonal Background -->
+
+            <div class="diagonal-panel"></div>
+            <div class="diagonal-glow"></div>
+
+            <!-- LOGIN SECTION -->
+
+            <section class="form-panel login-panel"
+                     id="loginPanel">
+
+                <h1>Login</h1>
+
+                <p class="form-subtitle">
+                    Sign in to your account
+                </p>
+
+                <form id="loginForm">
+
+                    <!-- Email -->
+
+                    <div class="input-box">
+
+                        <input type="email"
+                               id="loginEmail"
+                               autocomplete="email"
+                               required
+                               placeholder=" ">
+
+                        <label for="loginEmail">
+                            Email Address
+                        </label>
+
+                        <i class="fa-solid fa-user"></i>
+
+                    </div>
+
+                    <!-- Password -->
+
+                    <div class="input-box">
+
+                        <input type="password"
+                               id="loginPassword"
+                               autocomplete="current-password"
+                               required
+                               placeholder=" ">
+
+                        <label for="loginPassword">
+                            Password
+                        </label>
+
+                        <button type="button"
+                                class="password-toggle"
+                                data-target="loginPassword"
+                                aria-label="Show password">
+
+                            <i class="fa-solid fa-eye"></i>
+
+                        </button>
+
+                    </div>
+
+                    <!-- Remember Me -->
+
+                    <div class="form-options">
+
+                        <label class="remember-me">
+
+                            <input type="checkbox"
+                                   id="rememberMe">
+
+                            Remember me
+
+                        </label>
+
+                        <button type="button"
+                                class="text-button"
+                                id="forgotPasswordButton">
+
+                            Forgot Password?
+
+                        </button>
+
+                    </div>
+
+                    <!-- Login Button -->
+
+                    <button type="submit"
+                            class="gradient-button"
+                            id="loginButton">
+
+                        <span>Login</span>
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </button>
+
+                    <div class="divider">
+
+                        <span>OR</span>
+
+                    </div>
+
+                    <!-- Google Sign In -->
+
+                    <button type="button"
+                            class="google-button"
+                            id="googleLogin">
+
+                        <i class="fa-brands fa-google"></i>
+
+                        Continue with Google
+
+                    </button>
+
+                    <!-- Register Link -->
+
+                    <p class="switch-text">
+
+                        Don't have an account?
+
+                        <button type="button"
+                                class="text-button"
+                                id="showRegister">
+
+                            Sign Up
+
+                        </button>
+
+                    </p>
+
+                </form>
+
+            </section>
+
+            <!-- LOGIN WELCOME PANEL -->
+
+            <section class="welcome-panel login-welcome"
+                     id="loginWelcome">
+
+                <div class="welcome-icon">
+
+                    <i class="fa-solid fa-shield-halved"></i>
+
+                </div>
+
+                <span class="welcome-label">
+                    YOUR DIGITAL GATEWAY
+                </span>
+
+                <h2>
+                    WELCOME<br>
+                    BACK!
+                </h2>
+
+                <p>
+                    Your identity. Your access.
+                    Your world.
+                </p>
+
+                <div class="decorative-line"></div>
+
+                <div class="security-label">
+
+                    <i class="fa-solid fa-lock"></i>
+
+                    Secure Authentication
+
+                </div>
+
+            </section>
+
+            <!-- REGISTRATION SECTION -->
+
+            <section class="form-panel register-panel"
+                     id="registerPanel"
+                     inert>
+
+                <h1>Sign Up</h1>
+
+                <p class="form-subtitle">
+                    Create your AuthVerse account
+                </p>
+
+                <form id="registerForm">
+
+                    <!-- Full Name -->
+
+                    <div class="input-box">
+
+                        <input type="text"
+                               id="registerName"
+                               autocomplete="name"
+                               required
+                               placeholder=" ">
+
+                        <label for="registerName">
+                            Full Name
+                        </label>
+
+                        <i class="fa-solid fa-user"></i>
+
+                    </div>
+
+                    <!-- Email -->
+
+                    <div class="input-box">
+
+                        <input type="email"
+                               id="registerEmail"
+                               autocomplete="email"
+                               required
+                               placeholder=" ">
+
+                        <label for="registerEmail">
+                            Email Address
+                        </label>
+
+                        <i class="fa-solid fa-envelope"></i>
+
+                    </div>
+
+                    <!-- Password -->
+
+                    <div class="input-box">
+
+                        <input type="password"
+                               id="registerPassword"
+                               autocomplete="new-password"
+                               minlength="8"
+                               required
+                               placeholder=" ">
+
+                        <label for="registerPassword">
+                            Password
+                        </label>
+
+                        <button type="button"
+                                class="password-toggle"
+                                data-target="registerPassword"
+                                aria-label="Show password">
+
+                            <i class="fa-solid fa-eye"></i>
+
+                        </button>
+
+                    </div>
+
+                    <!-- Password Strength -->
+
+                    <div class="password-strength">
+
+                        <div class="strength-track">
+
+                            <div id="strengthBar"></div>
+
+                        </div>
+
+                        <small id="strengthText">
+                            Use at least 8 characters
+                        </small>
+
+                    </div>
+
+                    <!-- Confirm Password -->
+
+                    <div class="input-box">
+
+                        <input type="password"
+                               id="confirmPassword"
+                               autocomplete="new-password"
+                               required
+                               placeholder=" ">
+
+                        <label for="confirmPassword">
+                            Confirm Password
+                        </label>
+
+                        <button type="button"
+                                class="password-toggle"
+                                data-target="confirmPassword"
+                                aria-label="Show password">
+
+                            <i class="fa-solid fa-eye"></i>
+
+                        </button>
+
+                    </div>
+
+                    <!-- Registration Button -->
+
+                    <button type="submit"
+                            class="gradient-button"
+                            id="registerButton">
+
+                        <span>Create Account</span>
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </button>
+
+                    <div class="divider">
+
+                        <span>OR</span>
+
+                    </div>
+
+                    <button type="button"
+                            class="google-button"
+                            id="googleRegister">
+
+                        <i class="fa-brands fa-google"></i>
+
+                        Sign Up with Google
+
+                    </button>
+
+                    <p class="switch-text">
+
+                        Already have an account?
+
+                        <button type="button"
+                                class="text-button"
+                                id="showLogin">
+
+                            Login
+
+                        </button>
+
+                    </p>
+
+                </form>
+
+            </section>
+
+            <!-- REGISTER WELCOME PANEL -->
+
+            <section class="welcome-panel register-welcome"
+                     id="registerWelcome"
+                     inert>
+
+                <div class="welcome-icon">
+
+                    <i class="fa-solid fa-user-shield"></i>
+
+                </div>
+
+                <span class="welcome-label">
+                    BEGIN YOUR JOURNEY
+                </span>
+
+                <h2>
+                    HELLO,<br>
+                    FRIEND!
+                </h2>
+
+                <p>
+                    Create your account and unlock
+                    your digital experience.
+                </p>
+
+                <div class="decorative-line"></div>
+
+                <div class="security-label">
+
+                    <i class="fa-solid fa-fingerprint"></i>
+
+                    Your Identity Matters
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+    <!-- FORGOT PASSWORD MODAL -->
+
+    <dialog id="forgotPasswordModal"
+            class="modal">
+
+        <button type="button"
+                class="modal-close"
+                id="closeForgotModal"
+                aria-label="Close password reset">
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+        <div class="modal-icon">
+
+            <i class="fa-solid fa-key"></i>
+
+        </div>
+
+        <h2>Forgot Password?</h2>
+
+        <p>
+            Enter your registered email address.
+            We will send you a password reset link.
+        </p>
+
+        <form id="forgotPasswordForm">
+
+            <div class="input-box">
+
+                <input type="email"
+                       id="resetEmail"
+                       autocomplete="email"
+                       placeholder=" "
+                       required>
+
+                <label for="resetEmail">
+                    Email Address
+                </label>
+
+                <i class="fa-solid fa-envelope"></i>
+
+            </div>
+
+            <button type="submit"
+                    class="gradient-button">
+
+                Send Reset Link
+
+            </button>
+
+        </form>
+
+    </dialog>
+
+    <!-- EMAIL VERIFICATION MODAL -->
+
+    <dialog id="verificationModal"
+            class="modal">
+
+        <div class="modal-icon">
+
+            <i class="fa-solid fa-envelope-circle-check"></i>
+
+        </div>
+
+        <h2>Verify Your Email</h2>
+
+        <p>
+            Check your inbox and verify your email
+            address to continue to your account.
+        </p>
+
+        <button class="gradient-button"
+                id="checkVerification">
+
+            I Have Verified My Email
+
+        </button>
+
+        <button class="text-button"
+                id="resendVerification">
+
+            Resend Verification Email
+
+        </button>
+
+        <button class="text-button"
+                id="verificationLogout">
+
+            Back to Login
+
+        </button>
+
+    </dialog>
+
+    <!-- Toast Notifications -->
+
+    <div class="toast"
+         id="toast"
+         role="status"
+         aria-live="polite">
+
+        <i id="toastIcon"
+           class="fa-solid fa-circle-info"></i>
+
+        <span id="toastMessage"></span>
+
+    </div>
+
+    <!-- Loading Overlay -->
+
+    <div class="loading-overlay"
+         id="loadingOverlay"
+         hidden>
+
+        <div class="spinner"></div>
+
+        <p>Please wait...</p>
+
+    </div>
+
+    <!-- Footer -->
+
+    <footer class="footer">
+
+        <p>
+            <i class="fa-solid fa-shield-halved"></i>
+
+            AuthVerse — Your Secure Digital Gateway
+        </p>
+
+        <p>
+            Designed for Oasis Infobyte Internship
+            | Level 2 — Task 4
+        </p>
+
+    </footer>
+
+    <!-- JavaScript -->
+
+   
+<script>
+
+    document.querySelectorAll(".password-toggle")
+    .forEach(button => {
+
+        button.addEventListener("click", function () {
+
+            const input = document.getElementById(
+                this.dataset.target
+            );
+
+            const icon = this.querySelector("i");
+
+            if (input.type === "password") {
+
+                input.type = "text";
+
+                icon.className = "fa-solid fa-eye-slash";
+
+                this.setAttribute("aria-label", "Hide password");
+
+            } else {
+
+                input.type = "password";
+
+                icon.className = "fa-solid fa-eye";
+
+                this.setAttribute("aria-label", "Show password");
+
+            }
+
+        });
+
+    });
+
+</script>
+
+    <script type="module" src="script.js"></script>
+
+</body>
+</html>
