@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description:
     'An interactive tribute to Kalpana Chawla, the first woman of Indian origin to travel into space.',
   generator: 'v0.app',
-  icons: {
+icons: {
     icon: [
       {
         url: '/icon-light-32x32.png',
