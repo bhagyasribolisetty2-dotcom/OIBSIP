@@ -1,0 +1,969 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TaskVerse — Your Life, Your Way</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@400;600&family=Dancing+Script:wght@400;600&display=swap" rel="stylesheet">
+
+    <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer></script>
+
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">
+                <i data-lucide="layers"></i>
+            </div>
+
+            <div>
+                <h2>TaskVerse</h2>
+                <small>Your Life, Your Way</small>
+            </div>
+        </div>
+
+        <div class="profile">
+            <div class="avatar">
+                <i data-lucide="user-round"></i>
+            </div>
+
+            <div>
+                <strong id="profileName">My Workspace</strong>
+                <p>Personal workspace</p>
+            </div>
+        </div>
+
+        <nav>
+
+            <p class="nav-label">WORKSPACE</p>
+
+            <button class="nav-item active" data-page="home">
+                <i data-lucide="house"></i>
+                Home
+            </button>
+
+            <button class="nav-item" data-page="today">
+                <i data-lucide="list-todo"></i>
+                Today's To-Do
+            </button>
+
+            <button class="nav-item" data-page="planner">
+                <i data-lucide="calendar-range"></i>
+                Timetable Planner
+            </button>
+
+            <button class="nav-item" data-page="lists">
+                <i data-lucide="list-checks"></i>
+                My Lists
+            </button>
+
+            <button class="nav-item" data-page="notes">
+                <i data-lucide="notebook-pen"></i>
+                My Notes
+            </button>
+
+            <button class="nav-item" data-page="diary">
+                <i data-lucide="book-heart"></i>
+                My Diary
+            </button>
+
+            <button class="nav-item" data-page="calendar">
+                <i data-lucide="calendar-days"></i>
+                Calendar
+            </button>
+
+            <button class="nav-item" data-page="analytics">
+                <i data-lucide="chart-no-axes-combined"></i>
+                Analytics
+            </button>
+
+            <button class="nav-item" data-page="reminders">
+                <i data-lucide="bell"></i>
+                Reminders
+            </button>
+
+            <button class="nav-item" data-page="trash">
+                <i data-lucide="trash-2"></i>
+                Recycle Bin
+            </button>
+
+            <p class="nav-label">PERSONALIZATION</p>
+
+            <button class="nav-item" data-page="themes">
+                <i data-lucide="palette"></i>
+                Theme Studio
+            </button>
+
+            <button class="nav-item" data-page="settings">
+                <i data-lucide="settings"></i>
+                Settings
+            </button>
+
+        </nav>
+
+        <div class="sidebar-footer">
+            <i data-lucide="sparkles"></i>
+            <h3>Make today count.</h3>
+            <p>Small steps create beautiful journeys.</p>
+        </div>
+
+    </aside>
+
+    <!-- MAIN WORKSPACE -->
+
+    <main class="workspace">
+
+       
+<header class="topbar">
+
+    <div class="topbar-left">
+
+        <button class="icon-button"
+                id="menuButton"
+                aria-label="Toggle navigation">
+
+            <i data-lucide="menu"></i>
+
+        </button>
+
+        <span>My Personal Workspace</span>
+
+    </div>
+
+    <!-- Permanent Light / Dark Mode Switch -->
+
+    <div class="theme-switch-wrapper">
+
+        <span class="mode-icon">☀️</span>
+
+        <label class="theme-switch">
+
+            <input type="checkbox"
+                   id="darkModeToggle"
+                   aria-label="Dark mode">
+
+            <span class="theme-slider"></span>
+
+        </label>
+
+        <span class="mode-icon">🌙</span>
+
+    </div>
+
+    <!-- Save Status - Separate Element -->
+
+    <span class="saved" id="saveStatus">
+        Ready
+    </span>
+
+</header>
+
+
+        <!-- HOME PAGE -->
+
+        <section id="home" class="page active-page">
+
+            <div class="welcome">
+                <p id="currentDate"></p>
+                <h1 id="greeting">Hello, dreamer!</h1>
+                <h2>What will you achieve today?</h2>
+            </div>
+
+            <div class="quick-actions">
+
+                <button class="primary" onclick="openPlanEditor()">
+                    + Create Timetable
+                </button>
+
+                <button onclick="openTaskEditor()">
+                    + Add Task
+                </button>
+
+                <button onclick="createEntry('list')">
+                    + New List
+                </button>
+
+                <button onclick="createEntry('note')">
+                    + New Note
+                </button>
+
+                <button onclick="createEntry('diary')">
+                    + Diary Entry
+                </button>
+
+            </div>
+
+            <div class="stats-grid">
+
+                <article class="card stat">
+                    <i data-lucide="calendar-check"></i>
+                    <p>Today's Activities</p>
+                    <h2 id="totalTasks">0</h2>
+                </article>
+
+                <article class="card stat green-card">
+                    <i data-lucide="check-circle"></i>
+                    <p>Completed</p>
+                    <h2 id="completedTasks">0</h2>
+                </article>
+
+                <article class="card stat">
+                    <i data-lucide="clock"></i>
+                    <p>Pending</p>
+                    <h2 id="pendingTasks">0</h2>
+                </article>
+
+                <article class="card stat">
+                    <i data-lucide="list-checks"></i>
+                    <p>Saved Lists</p>
+                    <h2 id="totalLists">0</h2>
+                </article>
+
+            </div>
+
+            <div class="dashboard-grid">
+
+                <article class="card">
+
+                    <div class="card-heading">
+                        <h3>Today's Timetable</h3>
+
+                        <button onclick="showPage('today')">
+                            View All
+                        </button>
+                    </div>
+
+                    <div id="homeSchedule"></div>
+
+                </article>
+
+                <article class="card">
+
+                    <div class="card-heading">
+                        <h3>Additional To-Do</h3>
+
+                        <button onclick="openTaskEditor()">+</button>
+                    </div>
+
+                    <div id="homeExtras"></div>
+
+                </article>
+
+                <article class="card">
+
+                    <h3>Today's Progress</h3>
+
+                    <div class="progress-ring" id="progressRing">
+                        <span id="progressText">0%</span>
+                    </div>
+
+                    <p class="muted center" id="progressDescription">
+                        Complete your daily activities.
+                    </p>
+
+                </article>
+
+                <article class="card">
+
+                    <h3>Weekly Productivity</h3>
+
+                    <div id="homeChart" class="bar-chart"></div>
+
+                </article>
+
+                <article class="card">
+
+                    <div class="card-heading">
+                        <h3>My Lists</h3>
+
+                        <button onclick="showPage('lists')">
+                            View All
+                        </button>
+                    </div>
+
+                    <div id="recentLists"></div>
+
+                </article>
+
+                <article class="card">
+
+                    <div class="card-heading">
+                        <h3>Recent Notes</h3>
+
+                        <button onclick="createEntry('note')">
+                            +
+                        </button>
+                    </div>
+
+                    <div id="recentNotes"></div>
+
+                </article>
+
+                <article class="card diary-card">
+
+                    <i data-lucide="book-heart"></i>
+
+                    <h3>My Personal Diary</h3>
+
+                    <p>Every day has a story worth remembering.</p>
+
+                    <div id="recentDiary"></div>
+
+                    <button class="primary"
+                            onclick="createEntry('diary')">
+                        Write Your Thoughts
+                    </button>
+
+                </article>
+
+                <article class="card">
+
+                    <h3>Upcoming Reminders</h3>
+
+                    <div id="homeReminders"></div>
+
+                    <button onclick="showPage('reminders')">
+                        View Reminders
+                    </button>
+
+                </article>
+
+            </div>
+
+        </section>
+
+        <!-- TODAY'S TO-DO -->
+
+        <section id="today" class="page">
+
+            <div class="page-heading">
+
+                <div>
+                    <h1>Daily To-Do</h1>
+                    <p>Your schedule. Your goals. Your day.</p>
+                </div>
+
+                <button class="primary" onclick="openTaskEditor()">
+                    + Add Extra Task
+                </button>
+
+            </div>
+
+            <article class="card">
+
+                <div class="card-heading">
+                    <h3>Select Date</h3>
+                    <input type="date" id="todayDate">
+                </div>
+
+                <h2 class="large-progress" id="todayPercent">0%</h2>
+
+                <div class="progress-track">
+                    <div id="todayProgress" class="progress-fill"></div>
+                </div>
+
+                <p class="muted" id="todayStatus"></p>
+
+            </article>
+
+            <article class="card spaced">
+
+                <h3>Scheduled Activities</h3>
+
+                <p class="muted">
+                    Automatically generated from your weekly timetables.
+                </p>
+
+                <div id="todaySchedule"></div>
+
+            </article>
+
+            <article class="card spaced">
+
+                <div class="card-heading">
+                    <h3>Additional Tasks</h3>
+
+                    <button onclick="openTaskEditor()">+</button>
+                </div>
+
+                <div id="todayExtras"></div>
+
+            </article>
+
+        </section>
+
+        <!-- TIMETABLE PLANNER -->
+
+        <section id="planner" class="page">
+
+            <div class="page-heading">
+
+                <div>
+                    <h1>Timetable Planner</h1>
+                    <p>Create a weekly routine that repeats automatically.</p>
+                </div>
+
+                <button class="primary" onclick="openPlanEditor()">
+                    + Create Timetable
+                </button>
+
+            </div>
+
+            <div class="info-banner">
+
+                <i data-lucide="calendar-range"></i>
+
+                <div>
+                    <strong>Plan once, follow every day.</strong>
+
+                    <p>
+                        Customize Monday to Sunday, choose your dates,
+                        and TaskVerse will generate your daily schedule.
+                    </p>
+                </div>
+
+            </div>
+
+            <div id="planContainer" class="entry-grid"></div>
+
+        </section>
+
+        <!-- MY LISTS -->
+
+        <section id="lists" class="page">
+
+            <div class="page-heading">
+
+                <div>
+                    <h1>My Lists</h1>
+                    <p>Organize everything your way.</p>
+                </div>
+
+                <button class="primary"
+                        onclick="createEntry('list')">
+                    + Create List
+                </button>
+
+            </div>
+
+            <input class="search-input" id="listSearch"
+                   placeholder="Search your lists...">
+
+            <div id="listContainer" class="entry-grid"></div>
+
+        </section>
+
+        <!-- MY NOTES -->
+
+        <section id="notes" class="page">
+
+            <div class="page-heading">
+
+                <div>
+                    <h1>My Notes</h1>
+                    <p>A little space for your ideas and inspiration.</p>
+                </div>
+
+                <button class="primary"
+                        onclick="createEntry('note')">
+                    + New Note
+                </button>
+
+            </div>
+
+            <input class="search-input" id="noteSearch"
+                   placeholder="Search notes...">
+
+            <div id="noteContainer" class="entry-grid"></div>
+
+        </section>
+
+        <!-- DIARY -->
+
+        <section id="diary" class="page">
+
+            <div class="page-heading">
+
+                <div>
+                    <h1>My Personal Diary</h1>
+                    <p>Your memories, feelings and beautiful moments.</p>
+                </div>
+
+                <button class="primary"
+                        onclick="createEntry('diary')">
+                    + New Entry
+                </button>
+
+            </div>
+
+            <div class="diary-banner">
+                <h2>Dear Diary...</h2>
+                <p>Every day is a new page in your story.</p>
+            </div>
+
+            <input class="search-input" id="diarySearch"
+                   placeholder="Find your memories...">
+
+            <div id="diaryContainer" class="entry-grid"></div>
+
+        </section>
+
+        <!-- CALENDAR -->
+
+        <section id="calendar" class="page">
+
+            <h1>My Calendar</h1>
+
+            <p class="muted">
+                View your schedules and daily activities.
+            </p>
+
+            <article class="card spaced">
+
+                <div class="card-heading">
+
+                    <button onclick="changeMonth(-1)">❮</button>
+
+                    <h3 id="calendarTitle"></h3>
+
+                    <button onclick="changeMonth(1)">❯</button>
+
+                </div>
+
+                <div id="calendarGrid" class="calendar-grid"></div>
+
+            </article>
+
+        </section>
+
+        <!-- ANALYTICS -->
+
+        <section id="analytics" class="page">
+
+            <h1>Productivity Analytics</h1>
+
+            <p class="muted">Celebrate every little achievement.</p>
+
+            <div class="stats-grid" id="analyticsStats"></div>
+
+            <div class="dashboard-grid">
+
+                <article class="card">
+                    <h3>Last 7 Days — Daily Progress</h3>
+                    <div class="bar-chart" id="weeklyChart"></div>
+                </article>
+
+                <article class="card">
+                    <h3>Last 30 Days — Daily Progress</h3>
+                    <div class="bar-chart monthly-chart"
+                         id="monthlyChart"></div>
+                </article>
+
+                <article class="card">
+                    <h3>List-wise Completion</h3>
+                    <div id="listProgress"></div>
+                </article>
+
+                <article class="card">
+                    <h3>Timetable Progress</h3>
+                    <div id="planProgress"></div>
+                </article>
+
+            </div>
+
+        </section>
+
+        <!-- REMINDERS -->
+
+        <section id="reminders" class="page">
+
+            <div class="page-heading">
+
+                <div>
+                    <h1>Reminders</h1>
+                    <p>Keep important work in sight.</p>
+                </div>
+
+                <button class="primary" onclick="openTaskEditor()">
+                    + Add Reminder
+                </button>
+
+            </div>
+
+            <div class="info-banner">
+                <i data-lucide="bell"></i>
+                <p>
+                    Timed tasks and upcoming deadlines appear here.
+                    In-app alerts require TaskVerse to be open.
+                </p>
+            </div>
+
+            <div id="reminderContainer" class="entry-grid"></div>
+
+        </section>
+
+        <!-- RECYCLE BIN -->
+
+        <section id="trash" class="page">
+
+            <h1>Recycle Bin</h1>
+
+            <p class="muted">Restore your deleted lists, notes and memories.</p>
+
+            <div id="trashContainer" class="entry-grid"></div>
+
+        </section>
+
+        <!-- THEME STUDIO -->
+
+        <section id="themes" class="page">
+
+            <h1>Theme Studio</h1>
+
+            <p class="muted">
+                Make this workspace truly yours.
+            </p>
+
+            <h3 class="section-title">Choose Your Theme</h3>
+
+            <div id="themeContainer" class="theme-grid"></div>
+
+            <article class="card customization">
+
+                <h3>Customize Appearance</h3>
+
+                <label>
+                    Background Colour
+                    <input type="color" id="backgroundColor">
+                </label>
+
+                <label>
+                    Card Colour
+                    <input type="color" id="cardColor">
+                </label>
+
+                <label>
+                    Primary Colour
+                    <input type="color" id="primaryColor">
+                </label>
+
+                <label>
+                    Highlight Colour
+                    <input type="color" id="accentColor">
+                </label>
+
+                <label>
+                    Text Colour
+                    <input type="color" id="textColor">
+                </label>
+
+                <label>
+                    Card Roundness
+                    <input type="range" id="radiusInput"
+                           min="0" max="30">
+                </label>
+
+                <label>
+                    Font Size
+                    <input type="range" id="fontSizeInput"
+                           min="12" max="19">
+                </label>
+
+                <label>
+                    Font Style
+
+                    <select id="fontSelect">
+                        <option value="Inter">Modern</option>
+                        <option value="Georgia">Elegant</option>
+                        <option value="Arial">Minimal</option>
+                        <option value="monospace">Typewriter</option>
+                    </select>
+                </label>
+
+                <label>
+                    Background Pattern
+
+                    <select id="patternSelect">
+                        <option value="grid">Grid</option>
+                        <option value="dots">Dots</option>
+                        <option value="plain">Plain</option>
+                    </select>
+                </label>
+
+                <label>
+                    Enable Animations
+                    <input type="checkbox" id="animationInput">
+                </label>
+
+                <button class="primary" onclick="resetTheme()">
+                    Reset Default Theme
+                </button>
+
+            </article>
+
+        </section>
+
+        <!-- SETTINGS -->
+
+        <section id="settings" class="page">
+
+            <h1>Settings</h1>
+
+            <article class="card customization">
+
+                <h3>Personal Profile</h3>
+
+                <label for="username">Your Name</label>
+
+                <input id="username"
+                       placeholder="Enter your name">
+
+                <button class="primary" onclick="saveProfile()">
+                    Save Profile
+                </button>
+
+            </article>
+
+            <article class="card customization">
+
+                <h3>Backup and Restore</h3>
+
+                <p class="muted">
+                    Export your lists, diary, timetable,
+                    daily progress and theme preferences.
+                </p>
+
+                <button onclick="exportData()">
+                    Export Complete Backup
+                </button>
+
+                <label for="importFile">Import Backup</label>
+
+                <input type="file" id="importFile"
+                       accept=".json">
+
+            </article>
+
+            <article class="card customization">
+
+                <h3>Privacy and Storage</h3>
+
+                <p class="muted">
+                    Your information is stored in this browser.
+                    Diary entries are not encrypted.
+                    Export backups before clearing browser data.
+                </p>
+
+            </article>
+
+        </section>
+
+    </main>
+
+    <!-- LIST, NOTE AND DIARY EDITOR -->
+
+    <dialog id="editor">
+
+        <div class="editor-header">
+            <h2 id="editorHeading">Create Entry</h2>
+            <button onclick="closeEditor()">✕</button>
+        </div>
+
+        <input id="entryTitle"
+               placeholder="Give it a title...">
+
+        <div class="editor-options">
+
+            <select id="entryFormat">
+                <option value="checklist">Checklist</option>
+                <option value="bullet">Bullet Points</option>
+                <option value="numbered">Numbered List</option>
+                <option value="paragraph">Paragraph</option>
+            </select>
+
+            <label>
+                Card Colour
+                <input type="color" id="entryColor">
+            </label>
+
+            <select id="entryMood">
+                <option value="">Select Mood</option>
+                <option>😊 Happy</option>
+                <option>😌 Peaceful</option>
+                <option>🥰 Loved</option>
+                <option>😔 Sad</option>
+                <option>😴 Tired</option>
+                <option>😤 Stressed</option>
+                <option>✨ Inspired</option>
+            </select>
+
+            <label>
+                Highlight Card
+                <input type="checkbox" id="entryHighlight">
+            </label>
+
+        </div>
+
+        <div id="checklistEditor"></div>
+
+        <button id="addItemButton"
+                onclick="addChecklistItem()">
+            + Add Item
+        </button>
+
+        <textarea id="entryContent"
+                  rows="10"
+                  placeholder="Write your thoughts here...">
+        </textarea>
+
+        <div class="editor-footer">
+            <button onclick="clearEditor()">Erase Content</button>
+
+            <button class="primary" onclick="saveEntry()">
+                Save Entry
+            </button>
+        </div>
+
+    </dialog>
+
+    <!-- WEEKLY TIMETABLE EDITOR -->
+
+    <dialog id="planEditor">
+
+        <div class="editor-header">
+
+            <h2 id="planEditorTitle">Create Weekly Timetable</h2>
+
+            <button onclick="document.getElementById('planEditor').close()">
+                ✕
+            </button>
+
+        </div>
+
+        <form id="planForm">
+
+            <label>Timetable Name</label>
+
+            <input id="planName"
+                   placeholder="Example: My Study Schedule"
+                   required>
+
+            <div class="form-grid">
+
+                <label>
+                    Starting Date
+                    <input type="date" id="planStart" required>
+                </label>
+
+                <label>
+                    Ending Date
+                    <input type="date" id="planEnd" required>
+                </label>
+
+            </div>
+
+            <p class="muted">
+                This schedule repeats every week until the
+                ending date, including that date.
+            </p>
+
+            <div id="plannerWeekEditor"></div>
+
+            <button type="submit" class="primary">
+                Save Timetable
+            </button>
+
+        </form>
+
+    </dialog>
+
+    <!-- ADDITIONAL TASK EDITOR -->
+
+    <dialog id="taskEditor">
+
+        <div class="editor-header">
+
+            <h2 id="taskEditorTitle">Add Extra Task</h2>
+
+            <button onclick="document.getElementById('taskEditor').close()">
+                ✕
+            </button>
+
+        </div>
+
+        <form id="taskForm">
+
+            <label>Task Name</label>
+
+            <input id="taskName"
+                   placeholder="What do you need to do?"
+                   required>
+
+            <label>Description</label>
+
+            <textarea id="taskDescription"
+                      rows="3"
+                      placeholder="Additional information...">
+            </textarea>
+
+            <div class="form-grid">
+
+                <label>
+                    Date
+                    <input type="date" id="taskDate" required>
+                </label>
+
+                <label>
+                    Time (Optional)
+                    <input type="time" id="taskTime">
+                </label>
+
+                <label>
+                    Priority
+
+                    <select id="taskPriority">
+                        <option>Low</option>
+                        <option selected>Medium</option>
+                        <option>High</option>
+                    </select>
+                </label>
+
+                <label>
+                    Reminder
+
+                    <select id="taskReminder">
+                        <option value="-1">None</option>
+                        <option value="0">At scheduled time</option>
+                        <option value="5">5 minutes before</option>
+                        <option value="15">15 minutes before</option>
+                        <option value="30">30 minutes before</option>
+                        <option value="60">1 hour before</option>
+                    </select>
+                </label>
+
+            </div>
+
+            <button class="primary" type="submit">
+                Save Task
+            </button>
+
+        </form>
+
+    </dialog>
+
+    <div id="toast" class="toast"
+         role="status" aria-live="polite"></div>
+
+</body>
+</html>
